@@ -43,4 +43,26 @@ export class UsersListComponent implements OnDestroy {
     this.usersFromJsonSubscription.unsubscribe();
   }
 
+  /**
+   * Delete user from array
+   * @param {number} userId
+   */
+  deleteUser(userId: number) {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i]._id === userId) {
+        this.users.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+  /**
+   * Track by fn for users ngFor
+   * @param {number} index
+   * @param {User} user
+   */
+  userTrackBy(index: number, user: User) {
+    return user._id;
+  }
+
 }

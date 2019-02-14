@@ -1,9 +1,10 @@
 <mat-list>
   <h3 mat-subheader>Users</h3>
-  <mat-list-item *ngFor="let user of users">
+  <mat-list-item *ngFor="let user of users; trackBy: userTrackBy">
     <img mat-list-icon [src]="user.picture" alt="user icon"/>
     <h4 class="user-name" mat-line>{{user.name}}</h4>
     <p mat-line> {{user.company}} </p>
+    <button (click)="deleteUser(user._id)" mat-raised-button color="warn">Delete</button>
   </mat-list-item>
   <mat-divider></mat-divider>
 </mat-list>
