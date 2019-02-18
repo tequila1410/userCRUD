@@ -1,0 +1,135 @@
+<h2 mat-dialog-title>Add new user</h2>
+
+<mat-dialog-content class="custom-dialog-content">
+    <div class="row">
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="User name"
+                   formControlName="name"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   type="number"
+                   placeholder="User age"
+                   formControlName="age"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="Balance"
+                   formControlName="balance"
+                   required>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="Eye Color"
+                   formControlName="eyeColor"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <mat-select placeholder="Active"
+                        formControlName="isActive">
+                <mat-option [value]="true">
+                    true
+                </mat-option>
+                <mat-option [value]="false">
+                    false
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="Picture URL"
+                   formControlName="picture"
+                   required>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field [formGroup]="form">
+            <mat-select placeholder="Gender"
+                        formControlName="gender">
+                <mat-option [value]="'Female'">
+                    female
+                </mat-option>
+                <mat-option [value]="'Male'">
+                    male
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="Company"
+                   formControlName="company"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="E-mail"
+                   formControlName="email">
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field [formGroup]="form">
+            <span matPrefix>+380 &nbsp;</span>
+            <input matInput
+                   type="tel"
+                   placeholder="Phone"
+                   formControlName="phone"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="form">
+            <input matInput
+                   placeholder="Address"
+                   formControlName="address"
+                   required>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field [formGroup]="form" class="user-about-field">
+        <textarea matInput
+                  matTextareaAutosize
+                  matAutosizeMinRows=2
+                  matAutosizeMaxRows=5
+                  placeholder="About"
+                  formControlName="about">
+        </textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field [formGroup]="form" class="user-tags-field">
+            <mat-chip-list formControlName="tags" #tagList>
+                <mat-chip *ngFor="let tag of tags" [selectable]="true"
+                          [removable]="true" (removed)="remove(tag)">
+                    {{tag.tag}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New tag..."
+                       [matChipInputFor]="tagList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                       [matChipInputAddOnBlur]="true"
+                       (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+        </mat-form-field>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>

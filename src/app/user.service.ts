@@ -17,7 +17,23 @@ export class UserService {
   /**
    * To get users from json file
    */
-  getUsersFromJson(): Observable<User[]> {
-    return this.httpClient.get<User[]>('assets/users.json');
+  getUsersFromJson(): Observable<any[]> {
+    return this.httpClient.get<any[]>('assets/users.json');
+  }
+
+  /**
+   * Get users data from localStorage
+   * @return {User[]}
+   */
+  getUserFromLocalStorage(): User[] {
+    return JSON.parse(localStorage.getItem('users')) || null;
+  }
+
+  /**
+   * Save users to local storage
+   * @param {Users[]} users
+   */
+  saveUsers(users: User[]) {
+    localStorage.setItem('users', JSON.stringify(users));
   }
 }

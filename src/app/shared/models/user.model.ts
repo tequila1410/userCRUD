@@ -14,13 +14,13 @@ export class User {
   public name: string;
   public phone: string;
   public picture: string;
-  public registered: string;
+  public registered: Date;
   public tags: string[];
-  public _id: number;
+  public _id: string;
 
   constructor(about: string, address: string, age: number, balance: string, company: string, email: string,
               eyeColor: string, gender: string, guid: string, isActive: boolean, latitude: number, longitude: number,
-              name: string, phone: string, picture: string, registered: string, tags: string[], _id: number) {
+              name: string, phone: string, picture: string, registered: string, tags: string[], _id: string) {
   this.about = about;
   this.address = address;
   this.age = age;
@@ -36,7 +36,7 @@ export class User {
   this.name = name;
   this.phone = phone;
   this.picture = picture;
-  this.registered = registered;
+  this.registered = new Date(registered.replace(/\s/g, ''));
   this.tags = tags.slice();
   this._id = _id;
   }

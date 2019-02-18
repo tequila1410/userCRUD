@@ -1,3 +1,26 @@
-<p>
-  user works!
-</p>
+<div class="row justify-content-center">
+    <mat-card class="user-card">
+        <mat-card-header>
+            <div mat-card-avatar id="user-header-image"></div>
+            <mat-card-title>{{currentUser.name}} | {{currentUser.age}} years old</mat-card-title>
+            <mat-card-subtitle>{{currentUser.balance}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="user-about">
+                {{currentUser.about}}
+            </p>
+            <mat-card-subtitle>Email: {{currentUser.email}}</mat-card-subtitle>
+            <mat-card-subtitle>Phone: {{currentUser.phone}}</mat-card-subtitle>
+            <mat-card-subtitle>Address: {{currentUser.address}}</mat-card-subtitle>
+            <mat-card-subtitle>Registered: {{currentUser.registered | date:"MM-dd-yyyy HH-mm"}}</mat-card-subtitle>
+            <ul>
+                <li *ngFor="let tag of currentUser.tags">{{tag}}</li>
+            </ul>
+        </mat-card-content>
+        <mat-card-actions>
+            <a *ngIf="currentUser.latitude && currentUser.longitude"
+               [href]="'https://www.google.com/maps/@' + currentUser.latitude + ',' + currentUser.longitude + ',11.58z'"
+               target="_blank">Map</a>
+        </mat-card-actions>
+    </mat-card>
+</div>

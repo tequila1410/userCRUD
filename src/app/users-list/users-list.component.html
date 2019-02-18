@@ -1,10 +1,19 @@
-<mat-list>
-  <h3 mat-subheader>Users</h3>
-  <mat-list-item *ngFor="let user of users; trackBy: userTrackBy">
-    <img mat-list-icon [src]="user.picture" alt="user icon"/>
-    <h4 class="user-name" mat-line>{{user.name}}</h4>
-    <p mat-line> {{user.company}} </p>
-    <button (click)="deleteUser(user._id)" mat-raised-button color="warn">Delete</button>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
+<div class="row justify-content-md-center">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <mat-list>
+            <h2 class="list-header" mat-subheader>
+                <span class="list-header__text">Users:</span>
+                <button (click)="openDialog()" mat-raised-button color="accent">Add user</button>
+            </h2>
+            <mat-list-item *ngFor="let user of users; trackBy: userTrackBy" class="user-item">
+                <img mat-list-icon [src]="user.picture" alt="user icon"/>
+                <h4 mat-line>
+                    <span [routerLink]="['/user-details', user._id]" class="user-name">{{user.name}}</span>
+                </h4>
+                <p mat-line> {{user.company}} </p>
+                <button (click)="deleteUser(user._id)" class="delete-btn" mat-raised-button color="warn">Delete</button>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+</div>

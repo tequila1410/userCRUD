@@ -1,3 +1,23 @@
-.user-name {
-  cursor: pointer;
+.list-header {
+  display: flex;
+  justify-content: space-between;
+
+  &__text {
+    color: white;
+    font-size: 22px;
+  }
+}
+
+.user-item {
+  background: white;
+  border-radius: 15px;
+  margin: 10px 0;
+
+  .user-name {
+    cursor: pointer;
+  }
+
+  .delete-btn {
+    min-width: auto;
+  }
 }
